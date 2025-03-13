@@ -17,7 +17,13 @@ Devemos seguir rigorosamente todas as instruções e recomendações fornecidas 
 > Tão importante quanto, é sabermos que o código aqui disponibilizado, bem como o conjunto de instruções aqui documentadas, só deve ser implementado, compilado e implantado em seu veículo, e por sua única e própria responsabilidade. Ao decidir continuar, você assume todos e quaisquer riscos que invalidem a garantia do veículo ou danifiquem o software do mesmo, comprometendo operações ou, até mesmo, inutilizando parcialmente ou totalmente o equipamento.
 > 
 
-## Configuração Inicial do Projeto
+## Configuração do Ambiente
+
+A configuração inicial do ambiente de desenvolvimento para o projeto depende de basicamente os seguintes pontos:
+
+> * Download e configuração do SDK do fabricante
+> * Download e configuração do JAVA
+> * Download e configuração do Android Studio
 
 ### 1. Download do SDK do Fabricante
 
@@ -41,7 +47,9 @@ Devemos seguir rigorosamente todas as instruções e recomendações fornecidas 
 
     ![BYD SDK UNZIPED](/DOC/assets/development-setup-02.png)
 
-4. Usando um utilitário ZIP, descompacte o arquivo do Simulador em uma pasta do seu sistema de arquivos. Como referência, utilizei o caminho: ``C:\Lab\BYD\Simulator``
+4. Depois de descompactar o arquivo tar.gz do SDK, localize o arquivo **BYD_AUTO_SDK_v1.0.5.ZIP** em **C:\Lab\BYD\SDK\SDK_v1.0.5** e descompacte o seu conteúdo em ``C:\Lab\BYD\SDK``
+
+5. Usando um utilitário ZIP, descompacte o arquivo do Simulador em uma pasta do seu sistema de arquivos. Como referência, utilizei o caminho: ``C:\Lab\BYD\Simulator``
 
     ![BYD Simulator UNZIPED](/DOC/assets/development-setup-03.png)
 
@@ -107,7 +115,7 @@ O procedimento abaixo visa facilitar a configuração e funcionou perfeitamente 
 
   >
   > ### Atenção
-  > Caso a versão apresentada não esteja correta, verifique se todas as variáveis de ambiente foram criadas e apontam para os caminhos corretos
+  > Caso a versão apresentada não esteja correta, verifique se todas as variáveis de ambiente foram criadas e apontam para os caminhos corretos. Verifique também se não há mais de uma definição para as variáveis. 
 
 
 ### 3. Download e configuração do Android Studio
@@ -119,3 +127,248 @@ O procedimento abaixo visa facilitar a configuração e funcionou perfeitamente 
     ![Android Studio download](/DOC/assets/development-setup-14.png)
 
 2. Instale o Android Studio seguindo as configurações padrões;
+
+3. Após a conclusão da instalação, vamos configurar a pasta para o SDK. Clique no botão **More Actions**, no centro da tela, e escolha a opção **SDK Manager**:
+
+    ![Android Studio download](/DOC/assets/development-setup-15.png)
+
+4. Na tela do SDK Manager, localize o campo Android SDK Location e selecione o local onde o SDK da fabricante foi descompactado ``C:\Lab\BYD\SDK\byd-auto_sdk_windows``:
+
+    ![Android Studio download](/DOC/assets/development-setup-16.png)
+
+5. Clique em **OK** para salvar as configurações;
+
+6. Após definir o caminho para o SDK a ser utilizado, vamos configurar o emulador Android. Clique no botão **More Actions** e escolha **Virtual Device Manager**:
+
+    ![Android Studio download](/DOC/assets/development-setup-17.png)
+
+7. Na tela **Device Manager**, clique no botão **+** para criar um novo dispositivo virtual:
+
+    ![Android Studio download](/DOC/assets/development-setup-18.png)
+
+8. Na tela **Configure Hardware Profile**, insira as informações abaixo:
+
+  * Device Name: BYD
+  * Device Type: Phone/Tablet
+  * Screen size: 7,8
+  * Resolution: 1080 x 1920 px
+  * RAM: 2048 
+  
+9. Deixe as demais informações conforme original e clique em **Finish**;
+
+10. De volta na tela Select Hardware, mantenha o dispositivo recém configurado como selecionado e click em **Next**;
+
+    ![Android Studio download](/DOC/assets/development-setup-19.png)
+
+11. Na etapa **System Image**, selecione **x86 Images** e escolha a versão de Android Nougat, API level 25, Android 7.1.1 e system imagem x86_64, exatamente como na imagem abaixo:
+
+    ![Android Studio download](/DOC/assets/development-setup-20.png)
+
+12. Clique no botão de download ![Android Studio download](/DOC/assets/development-setup-21.png) ao lado do nome da imagem para iniciar o download dos arquivos:
+
+    ![Android Studio download](/DOC/assets/development-setup-22.png)
+
+13. Assim que o download da imagem for concluído, clique no botão **Finish**:
+
+    ![Android Studio download](/DOC/assets/development-setup-23.png)
+
+14. De volta a tela **System Image**, mantenha a imagem recentemente baixada como selecionada e clique em **Next**:
+
+15. Na tela **Android Virtual Device**, defina o nome do dispositivo e a orientação padrão como paisagem, conforme abaixo:
+
+    ![Android Studio download](/DOC/assets/development-setup-24.png)
+
+16. Depois clique no botão **Finish**.
+
+  > 
+  > ### Nota
+  > Caso durante a geração do dispositivo apareça uma mensagem informando **Intel Virtualization Technology (vt, vt-x) is not enabled**, reinicie o computador e habilite as configurações de tecnologia de virtualização da Intel na BIOS. Acesse em  em **Advanced Mode > Advanced > CPU > Configuration > Intel Virtual Technology > Enabled**
+  >
+
+### 4. Execução do Emulador
+
+Utilize essa etapa como uma etapa de verificação da configuração até aqui. Se após a execução dessa etapa não for possível carregar o emulador conforme configurado, provavelmente algum passo do procedimento não foi executado, ou não foi executado de forma correta. Reveja todos os passos com cuidado e atenção.
+
+#### Procedimento:
+
+1. Abra o Android Studio, clique no link **More Actions** no centro da janela e escolha a opção Virtual Device Manager:
+
+    ![AVD verification](/DOC/assets/development-setup-25.png)
+
+2. Selecione o dispositivo BYD Auto na lista de dispositivos e clique no botão ![AVD verification](/DOC/assets/development-setup-27.png):
+
+    ![AVD verification](/DOC/assets/development-setup-26.png)
+
+3. Aguarde a inicialização do dispositivo:
+
+    ![AVD verification](/DOC/assets/development-setup-28.png)
+    
+4. Após inicialização do dispositivo, o emulador deverá apresentar a seguinte tela:
+
+    ![AVD verification](/DOC/assets/development-setup-29.png)
+
+## Desenvolvimento do Aplicativo
+
+Agora vamos utilizar o Android Studio, configurado de forma apropriada anteriormente, para desenvolvermos nosso primeiro aplicativo utilizando o SDK fornecido pela própria BYD:
+
+### Novo Projeto Android - Hello World:
+
+Esse é o primeiro projeto, e utilizado como exemplo, entre outros projetos e aplicativos que poderão ser desenvolvidos. O objetivo aqui é apenas desenvolver um pequeno aplicativo, muito simples, para a compilação e execução do primeiro teste de execução no veículo.
+
+O que será feito:
+
+> * Criação de um novo projeto no Android Studio
+> * Definição do modelo de aplicativo a ser utilizado
+> * Especificação das informações do aplicativo
+> * Especificação do SDK Android e linguagens a serem utilizadas
+> * Conclusão do novo projeto
+
+#### Procedimento:
+
+1. Abra o Android Studio e escolha a opção **New Project**:
+
+    ![Desenvolvimento - New Project](/DOC/assets/development-app-01.png)
+
+2. No lado esquerdo da janela New Project, sessão **Templates**, selecione a opção **Phone and Tablet** e depois escolha o modelo **Basic Views Activity**:
+
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-02.png)
+
+  > 
+  > ### Nota
+  > Embora o objetivo seja criar um aplicativo para um automóvel, não selecione a opção **Automotive**. Essa opção é para criar aplicativos compatíveis com o Android Auto, o que não é o nosso caso nesse exemplo.
+  >
+
+3. Clique em **Next**.
+
+4. Na próxima tela, preencha os campos com as informações desejadas para o aplicativo:
+
+    ![Desenvolvimento - New Project](/DOC/assets/development-app-03.png)
+
+5. Clique em **Finish**.
+
+6. Quando o assistente concluir a configuração do projeto, clique em **Finish** novamente:
+
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-04.png)
+
+7. A tela anterior será fechada e uma nova tela, já com o código do aplicativo, será mostrada:
+
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-05.png)
+
+### Configuração e Desenvolvimento:
+
+O procedimento anterior criou um projeto simples, baseado nas informações que passamos para o assistente do Android Studio. O que precisamos fazer agora, é realizar as configurações apropriadas para que o projeto seja compilado da forma adequada e obtenha todas as permissões necessárias para utilizar as funções do veículo.
+
+O que será feito:
+
+> * Configuração do SDK correto no módulo do aplicativo;
+> * 
+> * 
+> * 
+> * 
+
+#### Procedimento:
+
+1. Caso não esteja visível, expanda a sessão **Gradle Scripts**, no Project Explorer:
+
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-06.png)
+
+2. E então dê um clique duplo para abrir o arquivo **build.gradle**, o arquivo do módulo do aplicativo (Module :app):
+
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-07.png)
+
+3. Localize a linha com a informação da versão do SDK a ser utilizado para a compilação do aplicativo:
+
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-08.png)
+
+4. Altere a versão para utilização do SDK 25:
+
+    ``` compileSdk 25 ```
+
+5. Faça o mesmo para o parâmetro **targetSDK**:
+
+    ``` targetSdk 25 ```
+
+6. Configure as dependências conforme abaixo:
+
+    ```
+    dependencies {
+        implementation fileTree(include: ['*.jar'], dir: 'libs' )
+        implementation 'com.android.support:appcompat—v7:25.1.0'
+        implementation 'com.android.support:design:25.1.0'
+        testImplementation 'junit:junit:4.12'
+    }
+    ```
+
+7. Acrescente a configuração de certificado para assinatura da versão de testes (Debug) dentro da sessão **android**:
+
+    ```
+    signingConfigs {
+        mydebug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('./keystore/platform.keystore')
+            storePassword 'android'
+        }
+    }
+    ```
+
+8. Por fim, inclua as informações de build para a compilação da sua versão de testes:
+
+    ```
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.mydebug
+        }
+    }
+    ```
+
+9. O seu arquivo build.gradle deve ficar como abaixo:
+
+    build.gradle (:app)
+    ```
+    apply plugin: 'com.android.application'
+
+    android {
+        signingConfigs {
+            mydebug  {
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
+                // Aqui você precisa configurar de acordo com o caminho do seu arquivo de chaves de assinatura: platform.keystore
+                storeFile file('./keystore/platform.keystore')
+                storePassword 'android'
+            }
+        }
+        compileSdkVersion 25
+        defaultConfig {
+            applicationId "com.byd.user.helloworld"
+            minSdkVersion 25
+            targetSdkVersion 25
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        }
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+            debug {
+                signingConfig signingConfigs.mydebug
+            }
+
+        }
+    }
+
+    dependencies {
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        implementation 'com.android.support:appcompat-v7:25.1.0'
+        implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+        implementation 'com.android.support:design:25.1.0'
+        testImplementation 'junit:junit:4.12'
+    }
+    ```
