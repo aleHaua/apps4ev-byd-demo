@@ -261,10 +261,10 @@ O procedimento anterior criou um projeto simples, baseado nas informações que 
 O que será feito:
 
 > * Configuração do SDK correto no módulo do aplicativo;
-> * 
-> * 
-> * 
-> * 
+> * Configuração das dependências
+> * Configuração das permissões para uso do SDK BYD AUTO
+> * Desenvolvimento da tela inicial
+> * Teste no emulador Android
 
 #### Procedimento:
 
