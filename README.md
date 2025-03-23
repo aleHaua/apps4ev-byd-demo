@@ -229,9 +229,9 @@ O que será feito:
 
     ![Desenvolvimento - New Project](/DOC/assets/development-app-01.png)
 
-2. No lado esquerdo da janela New Project, sessão **Templates**, selecione a opção **Phone and Tablet** e depois escolha o modelo **Basic Views Activity**:
+2. No lado esquerdo da janela New Project, sessão **Templates**, selecione a opção **Phone and Tablet** e depois escolha o modelo **Empty Activity**:
 
-    ![Desenvolvimento - Template selection](/DOC/assets/development-app-02.png)
+    ![Desenvolvimento - Template selection](/DOC/assets/development-app-02c.png)
 
   > 
   > ### Nota
@@ -270,15 +270,15 @@ O que será feito:
 
 1. Caso não esteja visível, expanda a sessão **Gradle Scripts**, no Project Explorer:
 
-    ![Desenvolvimento - Template selection](/DOC/assets/development-app-06.png)
+    ![Desenvolvimento - App](/DOC/assets/development-app-06.png)
 
 2. E então dê um clique duplo para abrir o arquivo **build.gradle**, o arquivo do módulo do aplicativo (Module :app):
 
-    ![Desenvolvimento - Template selection](/DOC/assets/development-app-07.png)
+    ![Desenvolvimento - App](/DOC/assets/development-app-07.png)
 
 3. Localize a linha com a informação da versão do SDK a ser utilizado para a compilação do aplicativo:
 
-    ![Desenvolvimento - Template selection](/DOC/assets/development-app-08.png)
+    ![Desenvolvimento - App](/DOC/assets/development-app-08.png)
 
 4. Altere a versão para utilização do SDK 25:
 
@@ -344,7 +344,7 @@ O que será feito:
         }
         compileSdkVersion 25
         defaultConfig {
-            applicationId "com.byd.user.helloworld"
+            namespace 'com.apps4ev.helloworld'
             minSdkVersion 25
             targetSdkVersion 25
             versionCode 1
@@ -371,4 +371,93 @@ O que será feito:
         implementation 'com.android.support:design:25.1.0'
         testImplementation 'junit:junit:4.12'
     }
+    ```
+10. Sincronize as modificações efetuadas com o Gradle. CLique na opção **Sync Now** na barra de aviso, localizada no topo da janela aberta para o arquivo build.gradle:
+
+    ![Desenvolvimento - App](/DOC/assets/development-app-09.png)
+
+11. Após a conclusão da sincronização, abra a janela de log da operação **Sync** para verificar se o build foi efetuado com sucesso:
+
+    ![Desenvolvimento - App](/DOC/assets/development-app-10.png)
+
+12. Feche o arquivo build.gradle e abra o arquivo **AndroidManifest.xml**:
+
+    ![Desenvolvimento - App](/DOC/assets/development-app-11.png)
+
+13. Inclua as permissões para utilização do SDK BYD AUTO:
+
+    ```
+    <!--Informações comuns (COMMON) do Veículo-->
+    <uses-permission android:name="android.permission.BYDAUTO_BODYWORK_COMMON"/>
+    <!--Permissões de acesso às informações do veículo-->
+    <uses-permission android:name="android.permission.BYDAUTO_BODYWORK_GET"/>
+    <!--Permissões comuns de ar condicionado-->
+    <uses-permission android:name="android.permission.BYDAUTO_AC_COMMON"/>
+    <!--Permissões para informações de ar condicionado-->
+    <uses-permission android:name="android.permission.BYDAUTO_AC_GET"/>
+    <!--Permissão para configuração do ar condicionado-->
+    <uses-permission android:name="android.permission.BYDAUTO_AC_SET"/>
+    <!--Permissão para informações de sensor`-->
+    <uses-permission android:name="android.permission.BYDAUTO_SENSOR_GET"/>
+    ```
+
+14. Inclua a referência para a atividade padrão do aplicativo:
+
+    ```
+    <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    ```
+
+15. O seu arquivo deverá ficar como abaixo:
+
+    AndroidManifest.xml
+    ```
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <!--Informações comuns (COMMON) do Veículo-->
+        <uses-permission android:name="android.permission.BYDAUTO_BODYWORK_COMMON"/>
+        <!--Permissões de acesso às informações do veículo-->
+        <uses-permission android:name="android.permission.BYDAUTO_BODYWORK_GET"/>
+        <!--Permissões comuns de ar condicionado-->
+        <uses-permission android:name="android.permission.BYDAUTO_AC_COMMON"/>
+        <!--Permissões para informações de ar condicionado-->
+        <uses-permission android:name="android.permission.BYDAUTO_AC_GET"/>
+        <!--Permissão para configuração do ar condicionado-->
+        <uses-permission android:name="android.permission.BYDAUTO_AC_SET"/>
+        <!--Permissão para informações de sensor`-->
+        <uses-permission android:name="android.permission.BYDAUTO_SENSOR_GET"/>
+
+        <application
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.HelloWorld"
+            tools:targetApi="25">
+            <activity
+                android:name=".MainActivity"
+                android:label="@string/app_name"
+                android:theme="@style/AppTheme.NoActionBar">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+        </application>
+
+    </manifest>
     ```

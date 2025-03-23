@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Apps4EV Demo</string>
+    <string name="action_settings">Configurações</string>
+    
+    <string name="main">Motorista</string>
+    <string name="deputy">Passageiro</string>
+    <string name="temperature">Temperatura</string>
+    <string name="wind_level">Velocidade</string>
+</resources>
